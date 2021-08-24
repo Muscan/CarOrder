@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static CarOrder.Car;
-using static CarOrder.Engine;
 using static CarOrder.Color;
+using static CarOrder.Engine;
 using static CarOrder.Utils;
 
 namespace CarOrder
@@ -27,9 +27,9 @@ namespace CarOrder
 
         }
 
-        private  void btnCalculate_Click(object sender, EventArgs e)
-        {   
-           
+        private void btnCalculate_Click(object sender, EventArgs e)
+        {
+
             Car carObject = new Car();
             carObject.CarName = "VW";
             carObject.CarPrice = 100000;
@@ -51,30 +51,30 @@ namespace CarOrder
             engineObject1.EngineCombustion = "Benzin";
             engineObject1.EnginePrice = 111;
 
-   
-            rdoBtnAudi.Text = carObject1.CarName; //+ " " + carObject1.CarPrice;
-            rdoBtnVW.Text = carObject.CarName;
+
+            rdoBtnAudi.Text   = carObject1.CarName; //+ " " + carObject1.CarPrice;
+            rdoBtnVW.Text     = carObject.CarName;
             rdoBtnBenzin.Text = engineObject1.EngineCombustion;
             rdoBtnDiesel.Text = engineObject.EngineCombustion;
-            rdoBtnRed.Text = colorObject.ColorName;
-            rdoBtnWhite.Text = colorObject1.ColorName;
+            rdoBtnRed.Text    = colorObject.ColorName;
+            rdoBtnWhite.Text  = colorObject1.ColorName;
 
-            string[] Cities = { "Cluj","Iasi","Brasov", "Arad"};
+            string[] Cities = { "Cluj", "Iasi", "Brasov", "Arad" };
 
 
-            if (IsChecked(rdoBtnAudi, rdoBtnVW)== false)
+            if (IsChecked(rdoBtnAudi, rdoBtnVW) == false)
             {
                 MessageBox.Show("Pick a car");
             }
-            else if(IsChecked(rdoBtnDiesel, rdoBtnBenzin) == false)
+            else if (IsChecked(rdoBtnDiesel, rdoBtnBenzin) == false)
             {
                 MessageBox.Show("Pick a combustion");
             }
-            else if(IsChecked(rdoBtnRed, rdoBtnWhite) == false)
+            else if (IsChecked(rdoBtnRed, rdoBtnWhite) == false)
             {
                 MessageBox.Show("Pick a color");
             }
-            else if(CityIsSelected(cmbBoxCity)== false)
+            else if (CityIsSelected(cmbBoxCity) == false)
             {
                 MessageBox.Show("Pick a city");
             }
@@ -84,26 +84,26 @@ namespace CarOrder
                 string result = "        ---Your configuration---\n";
                 string totalPrice = "Total price is: ";
 
-                result += DisplayCarOption(rdoBtnAudi, carObject1);
-                result += DisplayCarOption(rdoBtnVW, carObject);
-                result += DisplayColorOption(rdoBtnRed, colorObject);
-                result += DisplayColorOption(rdoBtnWhite, colorObject1);
-                result += DisplayCombustionOption(rdoBtnDiesel, engineObject);
-                result += DisplayCombustionOption(rdoBtnBenzin, engineObject1);
-                result += DisplayCity(cmbBoxCity, Cities);
+                result   += DisplayCarOption(rdoBtnAudi, carObject1);
+                result   += DisplayCarOption(rdoBtnVW, carObject);
+                result   += DisplayColorOption(rdoBtnRed, colorObject);
+                result   += DisplayColorOption(rdoBtnWhite, colorObject1);
+                result   += DisplayCombustionOption(rdoBtnDiesel, engineObject);
+                result   += DisplayCombustionOption(rdoBtnBenzin, engineObject1);
+                result   += DisplayCity(cmbBoxCity, Cities);
                 sumOfCar += CalculateOptions(rdoBtnVW, carObject);
                 sumOfCar += CalculateOptions(rdoBtnAudi, carObject1);
                 sumOfCar += CalculateOptions1(rdoBtnDiesel, engineObject);
                 sumOfCar += CalculateOptions1(rdoBtnBenzin, engineObject1);
                 sumOfCar += CalculateOptions2(rdoBtnRed, colorObject);
                 sumOfCar += CalculateOptions2(rdoBtnWhite, colorObject1);
-                
+
 
                 result += totalPrice + sumOfCar;
 
                 lblResults.Visible = true;
                 lblResults.Text = result;
-           
+
             }
         }
 
